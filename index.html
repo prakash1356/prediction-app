@@ -220,7 +220,26 @@ function clearHistory(){
  update();
  }
 }
+const analysisBox=document.createElement("div");
+analysisBox.className="card";
+analysisBox.innerHTML="<h2>📊 Result Analysis</h2><button onclick='analyze(10)'>10</button><button onclick='analyze(20)'>20</button><button onclick='analyze(50)'>50</button><div id='analysis'></div>";
+document.querySelector(".container").appendChild(analysisBox);
 
+function analyze(count){
+ let data=records.slice(0,count);
+ if(!data.length){
+ document.getElementById("analysis").innerHTML="No records yet";
+ return;
+ }
+ let big=data.filter(n=>n>=5).length;
+ let small=data.filter(n=>n<5).length;
+ document.getElementById("analysis").innerHTML=
+ "<p>Records analyzed: "+data.length+"</p>"+
+ "<p>BIG: "+big+"</p>"+
+ "<p>SMALL: "+small+"</p>"+
+ "<p>BIG %: "+(big/data.length*100).toFixed(1)+"%</p>"+
+ "<p>SMALL %: "+(small/data.length*100).toFixed(1)+"%</p>";
+ }
 generate();
 update();
 </script>
