@@ -10,7 +10,29 @@
 <div class="panel"><h3>OBSERVED SIZE SPLIT</h3><div id="windows">Waiting for sufficient data…</div></div>
 <div class="history"><table><thead><tr><th>PERIOD</th><th>NUM</th><th>SIZE</th><th>COLOR</th></tr></thead><tbody id="rows"></tbody></table></div></section></main>
 <script>
-function auth(){if(document.getElementById('pw').value==='Prakash@97'){document.getElementById('login').style.display='none';document.getElementById('dash').style.display='flex';start()}else document.getElementById('error').textContent='Invalid password'}
+function auth(){
+  if(document.getElementById('pw').value==='Prakash@97'){
+    sessionStorage.setItem('prakashLogin','yes');
+    showDash();
+  }else{
+    document.getElementById('error').textContent='Invalid password';
+  }
+}
+
+function showDash(){
+  document.getElementById('login').style.display='none';
+  document.getElementById('dash').style.display='flex';
+  if(!window.dashboardStarted){
+    window.dashboardStarted=true;
+    start();
+  }
+}
+
+window.addEventListener('DOMContentLoaded',()=>{
+  if(sessionStorage.getItem('prakashLogin')==='yes'){
+    showDash();
+  }
+});
 const API='https://draw.ar-lottery01.com/WinGo/WinGo_1M/GetHistoryIssuePage.json';let listCache=[];
 function color(n){return n===0||n===5?'Violet':([1,3,7,9].includes(n)?'Green':'Red')}
 function tick(){let s=new Date().getSeconds();document.getElementById('timer').textContent='00:'+String(60-s).padStart(2,'0')}
