@@ -148,7 +148,7 @@ Demo dashboard • No guaranteed prediction • Random game outcomes
 </div>
 
 <script>
-let records=[];
+let records=JSON.parse(localStorage.getItem("predictionRecords")||"[]");
 
 function getColor(n){
  if(n===0)return "RED + VIOLET";
@@ -177,6 +177,7 @@ function generate(){
 
 function addResult(n){
  records.unshift(n);
+ localStorage.setItem("predictionRecords",JSON.stringify(records));
  if(records.length>100)records.pop();
  update();
 }
@@ -217,6 +218,7 @@ function update(){
 function clearHistory(){
  if(confirm("Clear all recorded results?")){
  records=[];
+  localStorage.setItem("predictionRecords",JSON.stringify(records));
  update();
  }
 }
