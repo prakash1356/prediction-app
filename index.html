@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,31 +6,282 @@
 <title>PRAKASH HACKED</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
 <style>
-:root{--blue:#078cff;--purple:#7b2cff;--pink:#ff1493;--green:#19d77a;--red:#ff315c;--text:#18233a;--muted:#71809a;--border:#d9e5f5}*{box-sizing:border-box;margin:0;padding:0;user-select:none}body{background:radial-gradient(circle at 10% 5%,rgba(0,145,255,.12),transparent 28%),radial-gradient(circle at 90% 20%,rgba(255,20,147,.1),transparent 30%),linear-gradient(180deg,#fafdff,#eef5ff);font-family:Rajdhani,sans-serif;color:var(--text);min-height:100vh;padding:12px;display:flex;justify-content:center}#bg{position:fixed;inset:0;width:100%;height:100%;pointer-events:none}.app{width:100%;max-width:420px;z-index:1;display:flex;flex-direction:column;gap:13px;padding-bottom:20px}.logo{text-align:center;font:900 33px Orbitron,sans-serif;letter-spacing:3px;background:linear-gradient(90deg,#172238,#147ee8,#08aeea,#172238);background-clip:text;color:transparent;margin:26px 0 8px}.login,.period,.pred,.history,.panel{background:rgba(255,255,255,.95);border:1px solid var(--border);box-shadow:0 10px 30px rgba(45,90,140,.12);border-radius:26px}.login{padding:28px 22px;text-align:center}.label{font:800 12px Orbitron;letter-spacing:2px;color:var(--purple);margin-bottom:18px}.input{width:100%;padding:16px;border:1px solid #cddcf0;border-radius:15px;background:#f7faff;font:700 16px Orbitron;text-align:center;margin-bottom:14px}.btn{width:100%;border:0;border-radius:15px;padding:15px;color:white;font:900 14px Orbitron;letter-spacing:1px;background:linear-gradient(90deg,#087cff,#7131e8,#ed168e)}#dash{display:none;flex-direction:column;gap:13px}.period{padding:17px 20px;display:flex;justify-content:space-between;align-items:center}.p-label{font:800 11px Orbitron;color:var(--muted)}.pval{font:900 25px Orbitron;color:#182238;margin-top:7px}.timer{font:900 29px Orbitron;color:#12c86d;border-left:1px solid #dce6f2;padding-left:18px}.pred{min-height:300px;padding:35px 15px;display:flex;align-items:center;justify-content:center;flex-direction:column;position:relative}.pred:before{content:'';position:absolute;top:0;left:12%;width:76%;height:4px;border-radius:20px;background:linear-gradient(90deg,#09a5ff,#7430e9,#ff168e)}.sizeword{font:900 60px Orbitron;letter-spacing:2px;margin:12px 0 22px;color:#64748b}.balls{display:flex;gap:22px}.ball{width:76px;height:76px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#535b69,#202632 65%,#11151c);border:3px solid #078cff;display:flex;align-items:center;justify-content:center;font:900 28px Orbitron;color:#8b39ff;box-shadow:0 6px 15px rgba(25,40,65,.28),0 0 0 4px rgba(0,145,255,.08)}.ball.small{border-color:#ff168d}.hint{margin-top:20px;color:#71809a;text-align:center;font-size:12px;font-weight:700}.history{padding:15px;overflow:auto;max-height:42vh}table{width:100%;border-collapse:collapse}th{font:800 10px Orbitron;color:#667895;padding:9px 4px}td{text-align:center;padding:11px 4px;border-bottom:1px solid #edf2f8;font-size:14px;font-weight:700}.tag{display:inline-block;padding:4px 8px;border-radius:8px;background:#eef5ff;color:#33415b}.msg{font-size:12px;color:#71809a;text-align:center;padding:10px}.status{font-size:12px;text-align:center;color:#64748b;font-weight:700}.err{color:#e11d48;font-weight:700;margin-top:10px}.panel{padding:14px;color:#50617b;font-size:13px}.panel h3{font:800 12px Orbitron;color:#52627b;margin-bottom:10px}.statgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.stat{background:#f5f9ff;border-radius:12px;padding:10px;text-align:center}.stat strong{display:block;font:800 18px Orbitron;color:#182238}.stat span{font-size:11px;color:#71809a}.bar{height:9px;background:#e9eff8;border-radius:9px;overflow:hidden;margin:7px 0}.bar>i{display:block;height:100%;background:linear-gradient(90deg,#078cff,#7b2cff,#ff1493)}.disclaimer{font-size:11px;color:#71809a;text-align:center;padding:8px}
+:root{--blue:#078cff;--purple:#7b2cff;--pink:#ff1493;--green:#19d77a;--red:#ff315c;--text:#18233a;--muted:#71809a;--border:#d9e5f5}
+*{box-sizing:border-box;margin:0;padding:0;user-select:none}
+body{background:radial-gradient(circle at 10% 5%,rgba(0,145,255,.12),transparent 28%),radial-gradient(circle at 90% 20%,rgba(255,20,147,.1),transparent 30%),linear-gradient(180deg,#fafdff,#eef5ff);font-family:Rajdhani,sans-serif;color:var(--text);min-height:100vh;padding:12px;display:flex;justify-content:center}
+#bg{position:fixed;inset:0;width:100%;height:100%;pointer-events:none}
+.app{width:100%;max-width:420px;z-index:1;display:flex;flex-direction:column;gap:13px;padding-bottom:20px}
+.logo{text-align:center;font:900 33px Orbitron,sans-serif;letter-spacing:3px;background:linear-gradient(90deg,#172238,#147ee8,#08aeea,#172238);background-clip:text;color:transparent;margin:26px 0 8px}
+.login,.period,.pred,.history,.panel{background:rgba(255,255,255,.95);border:1px solid var(--border);box-shadow:0 10px 30px rgba(45,90,140,.12);border-radius:26px}
+.login{padding:28px 22px;text-align:center}
+.label{font:800 12px Orbitron;letter-spacing:2px;color:var(--purple);margin-bottom:18px}
+.input{width:100%;padding:16px;border:1px solid #cddcf0;border-radius:15px;background:#f7faff;font:700 16px Orbitron;text-align:center;margin-bottom:14px}
+.btn{width:100%;border:0;border-radius:15px;padding:15px;color:white;font:900 14px Orbitron;letter-spacing:1px;background:linear-gradient(90deg,#087cff,#7131e8,#ed168e);cursor:pointer}
+#dash{display:none;flex-direction:column;gap:13px}
+.period{padding:17px 20px;display:flex;justify-content:space-between;align-items:center}
+.p-label{font:800 11px Orbitron;color:var(--muted)}
+.pval{font:900 25px Orbitron;color:#182238;margin-top:7px}
+.timer{font:900 29px Orbitron;color:#12c86d;border-left:1px solid #dce6f2;padding-left:18px}
+.pred{min-height:300px;padding:35px 15px;display:flex;align-items:center;justify-content:center;flex-direction:column;position:relative}
+.pred:before{content:'';position:absolute;top:0;left:12%;width:76%;height:4px;border-radius:20px;background:linear-gradient(90deg,#09a5ff,#7430e9,#ff168e)}
+.sizeword{font:900 60px Orbitron;letter-spacing:2px;margin:12px 0 22px;color:#64748b}
+.balls{display:flex;gap:22px}
+.ball{width:76px;height:76px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#535b69,#202632 65%,#11151c);border:3px solid #078cff;display:flex;align-items:center;justify-content:center;font:900 28px Orbitron;color:#8b39ff;box-shadow:0 6px 15px rgba(25,40,65,.28),0 0 0 4px rgba(0,145,255,.08)}
+.ball.small{border-color:#ff168d}
+.hint{margin-top:20px;color:#71809a;text-align:center;font-size:12px;font-weight:700}
+.history{padding:15px;overflow:auto;max-height:42vh}
+table{width:100%;border-collapse:collapse}
+th{font:800 10px Orbitron;color:#667895;padding:9px 4px}
+td{text-align:center;padding:11px 4px;border-bottom:1px solid #edf2f8;font-size:14px;font-weight:700}
+.tag{display:inline-block;padding:4px 8px;border-radius:8px;background:#eef5ff;color:#33415b}
+.msg{font-size:12px;color:#71809a;text-align:center;padding:10px}
+.status{font-size:12px;text-align:center;color:#64748b;font-weight:700}
+.err{color:#e11d48;font-weight:700;margin-top:10px}
+.panel{padding:14px;color:#50617b;font-size:13px}
+.panel h3{font:800 12px Orbitron;color:#52627b;margin-bottom:10px}
+.statgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.stat{background:#f5f9ff;border-radius:12px;padding:10px;text-align:center}
+.stat strong{display:block;font:800 18px Orbitron;color:#182238}
+.stat span{font-size:11px;color:#71809a}
+.bar{height:9px;background:#e9eff8;border-radius:9px;overflow:hidden;margin:7px 0}
+.bar>i{display:block;height:100%;background:linear-gradient(90deg,#078cff,#7b2cff,#ff1493)}
+.disclaimer{font-size:11px;color:#71809a;text-align:center;padding:8px}
+.manualInput{width:100%;padding:12px;border:1px solid #d9e5f5;border-radius:12px;background:#f7faff;font:700 14px Rajdhani;margin:5px 0 10px}
+.manualBtn{width:100%;padding:12px;border:0;border-radius:12px;color:white;font:800 13px Orbitron;background:linear-gradient(90deg,#078cff,#7b2cff);margin-bottom:8px}
+.clearBtn{width:100%;padding:10px;border:1px solid #ff315c;color:#ff315c;border-radius:12px;background:white;font:700 12px Orbitron}
 </style>
 </head>
-<body><canvas id="bg"></canvas><main class="app"><div class="logo">PRAKASH HACKED</div>
-<section class="login" id="login"><div class="label">SYSTEM PROTOCOL LOCKED</div><input class="input" id="pw" type="password" placeholder="ENTER ACCESS KEY"><button class="btn" onclick="auth()">ACTIVATE SYSTEM</button><div id="error" class="err"></div><div class="msg">Personal demo interface</div></section>
-<section id="dash"><div class="period"><div><div class="p-label">LATEST PERIOD</div><div class="pval" id="period">----</div></div><div class="timer" id="timer">00:00</div></div>
-<div class="pred"><div id="size" class="sizeword">LIVE</div><div class="balls"><div class="ball" id="bigBall">?</div><div class="ball small" id="smallBall">?</div></div><div class="hint">Recent result balls • not future predictions</div></div><div class="status" id="status">Connecting to results source…</div>
-<div class="panel"><h3>RESULT AUDIT • LAST 100</h3><div class="statgrid"><div class="stat"><strong id="bigCount">—</strong><span>BIG results</span></div><div class="stat"><strong id="smallCount">—</strong><span>SMALL results</span></div><div class="stat"><strong id="avg">—</strong><span>Observed BIG share</span></div><div class="stat"><strong id="runs">—</strong><span>Current size streak</span></div></div><div id="shareBar" class="bar"><i style="width:0%"></i></div><div id="auditNote" class="msg">Waiting for results…</div></div>
-<div class="panel"><h3>NUMBER FREQUENCY • LAST 100</h3><div class="statgrid" id="freq"></div><div class="disclaimer">Frequency describes past outcomes only; it does not imply which number or size will occur next.</div></div>
-<div class="panel"><h3>OBSERVED SIZE SPLIT</h3><div id="windows">Waiting for sufficient data…</div></div>
-<div class="history"><table><thead><tr><th>PERIOD</th><th>NUM</th><th>SIZE</th><th>COLOR</th><th>STATUS</th></tr></thead><tbody id="rows"></tbody></table></div></section></main>
+<body>
+<canvas id="bg"></canvas>
+<main class="app">
+<div class="logo">PRAKASH HACKED</div>
+
+<section class="login" id="login">
+<div class="label">SYSTEM PROTOCOL LOCKED</div>
+<input class="input" id="pw" type="password" placeholder="ENTER ACCESS KEY">
+<button class="btn" onclick="auth()">ACTIVATE SYSTEM</button>
+<div id="error" class="err"></div>
+<div class="msg">Personal demo interface</div>
+</section>
+
+<section id="dash">
+<div class="period">
+<div><div class="p-label">LATEST PERIOD</div><div class="pval" id="period">----</div></div>
+<div class="timer" id="timer">00:00</div>
+</div>
+
+<div class="pred">
+<div id="size" class="sizeword">LIVE</div>
+<div class="balls"><div class="ball" id="bigBall">?</div><div class="ball small" id="smallBall">?</div></div>
+<div class="hint">Recent result balls • not future predictions</div>
+</div>
+
+<div class="status" id="status">Connecting to results source…</div>
+
+<div class="panel">
+<h3>RESULT AUDIT • LAST 100</h3>
+<div class="statgrid">
+<div class="stat"><strong id="bigCount">—</strong><span>BIG results</span></div>
+<div class="stat"><strong id="smallCount">—</strong><span>SMALL results</span></div>
+<div class="stat"><strong id="avg">—</strong><span>Observed BIG share</span></div>
+<div class="stat"><strong id="runs">—</strong><span>Current size streak</span></div>
+</div>
+<div id="shareBar" class="bar"><i style="width:0%"></i></div>
+<div id="auditNote" class="msg">Waiting for results…</div>
+</div>
+
+<div class="panel">
+<h3>NUMBER FREQUENCY • LAST 100</h3>
+<div class="statgrid" id="freq"></div>
+<div class="disclaimer">Frequency describes past outcomes only; it does not imply which number or size will occur next.</div>
+</div>
+
+<div class="panel">
+<h3>OBSERVED SIZE SPLIT</h3>
+<div id="windows">Waiting for sufficient data…</div>
+</div>
+
+<!-- MANUAL VERIFICATION -->
+<div class="panel">
+<h3>MANUAL RESULT VERIFICATION</h3>
+<div class="msg">Enter a period and your own selection to verify it against the actual result.</div>
+
+<label>Period Number</label>
+<input id="pickPeriod" class="manualInput" placeholder="Enter full period number" inputmode="numeric">
+
+<label>Selection Type</label>
+<select id="pickType" class="manualInput" onchange="changePickType()">
+<option value="size">BIG / SMALL</option>
+<option value="number">NUMBER 0-9</option>
+</select>
+
+<select id="pickValue" class="manualInput">
+<option value="BIG">BIG</option>
+<option value="SMALL">SMALL</option>
+</select>
+
+<button class="manualBtn" onclick="savePick()">SAVE SELECTION</button>
+<button class="clearBtn" onclick="clearPicks()">CLEAR SAVED SELECTIONS</button>
+<div id="pickMessage" class="msg">Selections are stored locally on this device.</div>
+</div>
+
+<div class="history">
+<table>
+<thead><tr><th>PERIOD</th><th>NUM</th><th>SIZE</th><th>COLOR</th><th>STATUS</th></tr></thead>
+<tbody id="rows"></tbody>
+</table>
+</div>
+</section>
+</main>
+
 <script>
-function auth(){if(document.getElementById('pw').value==='Prakash@97'){sessionStorage.setItem('prakashLogin','yes');showDash()}else document.getElementById('error').textContent='Invalid password'}
-function showDash(){document.getElementById('login').style.display='none';document.getElementById('dash').style.display='flex';if(!window.dashboardStarted){window.dashboardStarted=true;start()}}
+function auth(){
+ if(document.getElementById('pw').value==='Prakash@97'){
+ sessionStorage.setItem('prakashLogin','yes');showDash()
+ }else document.getElementById('error').textContent='Invalid password'
+}
+function showDash(){
+ document.getElementById('login').style.display='none';
+ document.getElementById('dash').style.display='flex';
+ if(!window.dashboardStarted){window.dashboardStarted=true;start()}
+}
 window.addEventListener('DOMContentLoaded',()=>{if(sessionStorage.getItem('prakashLogin')==='yes')showDash()});
-const API='https://draw.ar-lottery01.com/WinGo/WinGo_1M/GetHistoryIssuePage.json';let listCache=[];
+
+const API='https://draw.ar-lottery01.com/WinGo/WinGo_1M/GetHistoryIssuePage.json';
+let listCache=[];
+let manualPicks={};
+
+try{manualPicks=JSON.parse(localStorage.getItem('prakashManualPicks')||'{}')}catch(e){manualPicks={}}
+
 function color(n){return n===0||n===5?'Violet':([1,3,7,9].includes(n)?'Green':'Red')}
 function tick(){let s=new Date().getSeconds();document.getElementById('timer').textContent='00:'+String(60-s).padStart(2,'0')}
 function size(n){return n>=5?'BIG':'SMALL'}
 function calc(a){if(!a.length)return {big:0,small:0};let big=a.filter(n=>n>=5).length;return {big,small:a.length-big}}
 function streak(a){if(!a.length)return '—';let first=size(a[0]),count=0;for(let n of a){if(size(n)===first)count++;else break}return count+' '+first}
-function updateAudit(list){let nums=list.slice(0,100).map(x=>Number(x.number)),b=calc(nums),total=nums.length,share=total?Math.round(b.big/total*100):0;document.getElementById('bigCount').textContent=b.big;document.getElementById('smallCount').textContent=b.small;document.getElementById('avg').textContent=share+'%';document.getElementById('runs').textContent=streak(nums);document.querySelector('#shareBar i').style.width=share+'%';document.getElementById('auditNote').textContent=`${total} observed rounds • BIG ${share}% / SMALL ${100-share}% • descriptive only`;
-let fc=Array(10).fill(0);nums.forEach(n=>{if(n>=0&&n<=9)fc[n]++});document.getElementById('freq').innerHTML=fc.map((v,n)=>`<div class="stat"><strong>${n}: ${v}</strong><span>${total?Math.round(v/total*100):0}% of sample</span></div>`).join('');
-let windows=[10,20,50,100].map(k=>{let ar=list.slice(0,k).map(x=>Number(x.number));if(!ar.length)return `<div style="margin:6px 0"><b>Last ${k}:</b> No data</div>`;let q=calc(ar);return `<div style="margin:6px 0"><b>Last ${ar.length} (window ${k}):</b> BIG ${q.big} (${Math.round(q.big/ar.length*100)}%) • SMALL ${q.small} (${Math.round(q.small/ar.length*100)}%)</div>`});document.getElementById('windows').innerHTML=windows.join('')}
-async function load(){try{let r=await fetch(API+'?t='+Date.now());if(!r.ok)throw Error();let d=await r.json(),list=d?.data?.list;if(!list?.length)throw Error();listCache=list;let latest=list[0],issue=latest.issueNumber;document.getElementById('period').textContent=String(issue).slice(-4);let nums=list.slice(0,2).map(x=>Number(x.number));document.getElementById('size').textContent=size(Number(latest.number));document.getElementById('size').style.color=size(Number(latest.number))==='BIG'?'#ff0055':'#00b96b';document.getElementById('bigBall').textContent=nums[0]??'?';document.getElementById('smallBall').textContent=nums[1]??'?';document.getElementById('status').textContent='Live history feed connected • '+new Date().toLocaleTimeString();document.getElementById('rows').innerHTML=list.slice(0,30).map(x=>{let n=Number(x.number),sz=size(n);return `<tr><td>${String(x.issueNumber).slice(-4)}</td><td>${n}</td><td><span class="tag">${sz}</span></td><td>${color(n)}</td><td>—</td></tr>`}).join('');updateAudit(list)}catch(e){document.getElementById('status').textContent='Live source unavailable right now. Retrying…'}}
+
+function changePickType(){
+ let type=document.getElementById('pickType').value;
+ let sel=document.getElementById('pickValue');
+ if(type==='size'){
+  sel.innerHTML='<option value="BIG">BIG</option><option value="SMALL">SMALL</option>';
+ }else{
+  sel.innerHTML=Array.from({length:10},(_,n)=>`<option value="${n}">${n}</option>`).join('');
+ }
+}
+
+function savePick(){
+ let period=document.getElementById('pickPeriod').value.trim();
+ let type=document.getElementById('pickType').value;
+ let value=document.getElementById('pickValue').value;
+
+ if(!period){
+  document.getElementById('pickMessage').textContent='Please enter a period number.';
+  return;
+ }
+
+ manualPicks[period]={type,value};
+ localStorage.setItem('prakashManualPicks',JSON.stringify(manualPicks));
+ document.getElementById('pickMessage').textContent='Selection saved for period '+period;
+ renderRows(listCache);
+}
+
+function clearPicks(){
+ if(!confirm('Delete all saved selections?'))return;
+ manualPicks={};
+ localStorage.removeItem('prakashManualPicks');
+ document.getElementById('pickMessage').textContent='Saved selections cleared.';
+ renderRows(listCache);
+}
+
+function getResultStatus(x){
+ let p=manualPicks[String(x.issueNumber)];
+ if(!p)return '—';
+ let n=Number(x.number);
+ if(p.type==='number'){
+  return Number(p.value)===n?'JACKPOT':'LOSS';
+ }
+ return p.value===size(n)?'WIN':'LOSS';
+}
+
+function renderRows(list){
+ document.getElementById('rows').innerHTML=list.slice(0,30).map(x=>{
+ let n=Number(x.number),sz=size(n),st=getResultStatus(x);
+ let statusColor=st==='WIN'?'#19a765':st==='JACKPOT'?'#7b2cff':st==='LOSS'?'#ff315c':'#64748b';
+ return `<tr>
+ <td>${String(x.issueNumber).slice(-4)}</td>
+ <td>${n}</td>
+ <td><span class="tag">${sz}</span></td>
+ <td>${color(n)}</td>
+ <td style="color:${statusColor};font-weight:900">${st}</td>
+ </tr>`;
+ }).join('');
+}
+
+function updateAudit(list){
+ let nums=list.slice(0,100).map(x=>Number(x.number)),b=calc(nums),total=nums.length,share=total?Math.round(b.big/total*100):0;
+ document.getElementById('bigCount').textContent=b.big;
+ document.getElementById('smallCount').textContent=b.small;
+ document.getElementById('avg').textContent=share+'%';
+ document.getElementById('runs').textContent=streak(nums);
+ document.querySelector('#shareBar i').style.width=share+'%';
+ document.getElementById('auditNote').textContent=`${total} observed rounds • BIG ${share}% / SMALL ${100-share}% • descriptive only`;
+
+ let fc=Array(10).fill(0);
+ nums.forEach(n=>{if(n>=0&&n<=9)fc[n]++});
+ document.getElementById('freq').innerHTML=fc.map((v,n)=>`<div class="stat"><strong>${n}: ${v}</strong><span>${total?Math.round(v/total*100):0}% of sample</span></div>`).join('');
+
+ let windows=[10,20,50,100].map(k=>{
+ let ar=list.slice(0,k).map(x=>Number(x.number));
+ if(!ar.length)return `<div style="margin:6px 0"><b>Last ${k}:</b> No data</div>`;
+ let q=calc(ar);
+ return `<div style="margin:6px 0"><b>Last ${ar.length} (window ${k}):</b> BIG ${q.big} (${Math.round(q.big/ar.length*100)}%) • SMALL ${q.small} (${Math.round(q.small/ar.length*100)}%)</div>`;
+ });
+ document.getElementById('windows').innerHTML=windows.join('');
+}
+
+async function load(){
+ try{
+  let r=await fetch(API+'?t='+Date.now());
+  if(!r.ok)throw Error();
+  let d=await r.json(),list=d?.data?.list;
+  if(!list?.length)throw Error();
+  listCache=list;
+  let latest=list[0],issue=latest.issueNumber;
+  document.getElementById('period').textContent=String(issue).slice(-4);
+  let nums=list.slice(0,2).map(x=>Number(x.number));
+  document.getElementById('size').textContent=size(Number(latest.number));
+  document.getElementById('size').style.color=size(Number(latest.number))==='BIG'?'#ff0055':'#00b96b';
+  document.getElementById('bigBall').textContent=nums[0]??'?';
+  document.getElementById('smallBall').textContent=nums[1]??'?';
+  document.getElementById('status').textContent='Live history feed connected • '+new Date().toLocaleTimeString();
+  renderRows(list);
+  updateAudit(list);
+ }catch(e){
+  document.getElementById('status').textContent='Live source unavailable right now. Retrying…'
+ }
+}
+
 function start(){tick();setInterval(tick,1000);load();setInterval(load,8000)}
-const c=document.getElementById('bg'),ctx=c.getContext('2d');let ps=[];function resize(){c.width=innerWidth;c.height=innerHeight;ps=Array.from({length:45},()=>({x:Math.random()*c.width,y:Math.random()*c.height,vx:(Math.random()-.5)*.5,vy:(Math.random()-.5)*.5,r:Math.random()*2+1}))}resize();addEventListener('resize',resize);function anim(){ctx.clearRect(0,0,c.width,c.height);ps.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>c.width)p.vx*=-1;if(p.y<0||p.y>c.height)p.vy*=-1;ctx.fillStyle='rgba(0,190,180,.35)';ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill()});requestAnimationFrame(anim)}anim();
-</script></body></html>
+
+const c=document.getElementById('bg'),ctx=c.getContext('2d');
+let ps=[];
+function resize(){
+ c.width=innerWidth;c.height=innerHeight;
+ ps=Array.from({length:45},()=>({x:Math.random()*c.width,y:Math.random()*c.height,vx:(Math.random()-.5)*.5,vy:(Math.random()-.5)*.5,r:Math.random()*2+1}))
+}
+resize();addEventListener('resize',resize);
+function anim(){
+ ctx.clearRect(0,0,c.width,c.height);
+ ps.forEach(p=>{
+ p.x+=p.vx;p.y+=p.vy;
+ if(p.x<0||p.x>c.width)p.vx*=-1;
+ if(p.y<0||p.y>c.height)p.vy*=-1;
+ ctx.fillStyle='rgba(0,190,180,.35)';
+ ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill()
+ });
+ requestAnimationFrame(anim)
+}
+anim();
+</script>
+</body>
+</html>
