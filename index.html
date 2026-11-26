@@ -5,65 +5,132 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Prediction Dashboard</title>
+
 <style>
 *{box-sizing:border-box}
 body{
- margin:0;font-family:Arial,sans-serif;
- background:#0f172a;color:white;padding:20px;
+margin:0;
+font-family:Arial,sans-serif;
+background:linear-gradient(135deg,#07111f,#101b35);
+color:white;
+min-height:100vh;
+padding:20px;
 }
 .card{
- max-width:500px;margin:30px auto;
- background:#1e293b;padding:25px;border-radius:20px;
- box-shadow:0 8px 30px #0004;
+max-width:480px;
+margin:30px auto;
+padding:25px;
+border-radius:25px;
+background:#1e293b;
+box-shadow:0 15px 40px rgba(0,0,0,.4);
+text-align:center;
 }
-h1{text-align:center;color:#38bdf8}
-.subtitle{text-align:center;color:#94a3b8}
-.box{
- background:#0f172a;border-radius:14px;padding:20px;
- text-align:center;margin:20px 0;
+h1{
+color:#38bdf8;
+font-size:30px;
+margin-bottom:10px;
 }
-.result{font-size:40px;font-weight:bold;color:#22c55e}
+.subtitle{
+color:#94a3b8;
+margin-bottom:25px;
+}
+.result{
+background:#0f172a;
+border-radius:20px;
+padding:30px 15px;
+margin:20px 0;
+min-height:180px;
+}
+.result h2{
+font-size:20px;
+font-weight:normal;
+}
+#output{
+font-size:38px;
+font-weight:bold;
+color:#22c55e;
+margin:25px 0;
+}
+#message{
+color:#cbd5e1;
+}
 button{
- width:100%;padding:15px;border:0;border-radius:12px;
- background:#38bdf8;color:#07111f;font-size:18px;
- font-weight:bold;margin-top:12px;
+width:100%;
+border:none;
+border-radius:15px;
+padding:18px;
+margin-top:15px;
+font-size:20px;
+font-weight:bold;
+cursor:pointer;
+background:linear-gradient(135deg,#38bdf8,#0ea5e9);
+color:#07111f;
+transition:.2s;
 }
-.small{color:#94a3b8;font-size:13px;text-align:center}
+button:active{
+transform:scale(.97);
+}
+.reset{
+background:linear-gradient(135deg,#818cf8,#6366f1);
+color:white;
+}
+.note{
+color:#94a3b8;
+font-size:14px;
+line-height:1.6;
+margin-top:25px;
+}
 </style>
 </head>
-<body>
-<div class="card">
-<h1>⚡ Prediction Dashboard</h1>
-<p class="subtitle">Personal Demo Prediction System</p>
 
-<div class="box">
-<p>Demo Result</p>
-<div class="result" id="result">---</div>
-<p id="info">Generate पर क्लिक करें</p>
+<body>
+
+<div class="card">
+
+<h1>⚡ Prediction Dashboard</h1>
+<p class="subtitle">Personal Demo Generator</p>
+
+<div class="result">
+<h2>Demo Result</h2>
+<div id="output">---</div>
+<p id="message">Generate पर क्लिक करें</p>
 </div>
 
-<button onclick="generate()">Generate Prediction</button>
-<button onclick="resetData()">Reset</button>
+<button onclick="generate()">Generate Result</button>
 
-<p class="small">
-यह केवल demo random generator है। वास्तविक परिणाम की
-गारंटी नहीं है और इसे betting के लिए भरोसेमंद न मानें।
+<button class="reset" onclick="resetApp()">Reset</button>
+
+<p class="note">
+यह एक Demo Random Generator है। इसके परिणाम वास्तविक
+prediction नहीं हैं और किसी गेम या betting के परिणाम
+की गारंटी नहीं देते।
 </p>
+
 </div>
 
 <script>
 function generate(){
- const choices=["RED","GREEN","BLUE"];
- const result=choices[Math.floor(Math.random()*choices.length)];
- document.getElementById("result").innerText=result;
- document.getElementById("info").innerText=
- "Demo result generated: "+new Date().toLocaleTimeString();
+
+const results=["RED","GREEN","VIOLET"];
+
+const random=Math.floor(Math.random()*results.length);
+
+document.getElementById("output").innerText=results[random];
+
+document.getElementById("message").innerText=
+"Demo result generated";
+
 }
-function resetData(){
- document.getElementById("result").innerText="---";
- document.getElementById("info").innerText="Generate पर क्लिक करें";
+
+function resetApp(){
+
+document.getElementById("output").innerText="---";
+
+document.getElementById("message").innerText=
+"Generate पर क्लिक करें";
+
 }
 </script>
+
 </body>
-  </html>
-  
+</html>
