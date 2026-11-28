@@ -1,177 +1,937 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>PRAKASH HACK</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
-<style>
-:root{--blue:#078cff;--purple:#7b2cff;--pink:#ff1493;--green:#19d77a;--red:#ff315c;--text:#18233a;--muted:#71809a;--border:#d9e5f5}
-*{box-sizing:border-box;margin:0;padding:0;user-select:none}
-body{background:radial-gradient(circle at 10% 5%,rgba(0,145,255,.12),transparent 28%),radial-gradient(circle at 90% 20%,rgba(255,20,147,.1),transparent 30%),linear-gradient(180deg,#fafdff,#eef5ff);font-family:Rajdhani,sans-serif;color:var(--text);min-height:100vh;padding:12px;display:flex;justify-content:center}
-#bg{position:fixed;inset:0;width:100%;height:100%;pointer-events:none}
-.app{width:100%;max-width:420px;z-index:1;display:flex;flex-direction:column;gap:13px;padding-bottom:20px}
-.logo{text-align:center;font:900 33px Orbitron,sans-serif;letter-spacing:3px;background:linear-gradient(90deg,#172238,#147ee8,#08aeea,#172238);background-clip:text;color:transparent;margin:26px 0 8px}
-.login,.period,.pred,.history,.panel{background:rgba(255,255,255,.95);border:1px solid var(--border);box-shadow:0 10px 30px rgba(45,90,140,.12);border-radius:26px}
-.login{padding:28px 22px;text-align:center}.label{font:800 12px Orbitron;letter-spacing:2px;color:var(--purple);margin-bottom:18px}
-.input,.manualInput{width:100%;padding:14px;border:1px solid #cddcf0;border-radius:15px;background:#f7faff;font:700 16px Orbitron;text-align:center;margin-bottom:12px}
-.btn{width:100%;border:0;border-radius:15px;padding:15px;color:white;font:900 14px Orbitron;letter-spacing:1px;background:linear-gradient(90deg,#087cff,#7131e8,#ed168e);cursor:pointer}
-#dash{display:none;flex-direction:column;gap:13px}.period{padding:17px 20px;display:flex;justify-content:space-between;align-items:center}
-.p-label{font:800 11px Orbitron;color:var(--muted)}.pval{font:900 25px Orbitron;color:#182238;margin-top:7px}
-.timer{font:900 29px Orbitron;color:#12c86d;border-left:1px solid #dce6f2;padding-left:18px}
-.pred{min-height:300px;padding:35px 15px;display:flex;align-items:center;justify-content:center;flex-direction:column;position:relative}
-.pred:before{content:'';position:absolute;top:0;left:12%;width:76%;height:4px;border-radius:20px;background:linear-gradient(90deg,#09a5ff,#7430e9,#ff168e)}
-.sizeword{font:900 60px Orbitron;letter-spacing:2px;margin:12px 0 22px;color:#64748b}
-.balls{display:flex;gap:22px}.ball{width:76px;height:76px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#535b69,#202632 65%,#11151c);border:3px solid #078cff;display:flex;align-items:center;justify-content:center;font:900 28px Orbitron;color:#8b39ff;box-shadow:0 6px 15px rgba(25,40,65,.28),0 0 0 4px rgba(0,145,255,.08)}
-.ball.small{border-color:#ff168d}.hint{margin-top:20px;color:#71809a;text-align:center;font-size:12px;font-weight:700}
-.history{padding:15px;overflow:auto;max-height:42vh}table{width:100%;border-collapse:collapse}
-th{font:800 10px Orbitron;color:#667895;padding:9px 4px}td{text-align:center;padding:11px 4px;border-bottom:1px solid #edf2f8;font-size:14px;font-weight:700}
-.tag{display:inline-block;padding:4px 8px;border-radius:8px;background:#eef5ff;color:#33415b}
-.msg{font-size:12px;color:#71809a;text-align:center;padding:10px}.status{font-size:12px;text-align:center;color:#64748b;font-weight:700}.err{color:#e11d48;font-weight:700;margin-top:10px}
-.panel{padding:14px;color:#50617b;font-size:13px}.panel h3{font:800 12px Orbitron;color:#52627b;margin-bottom:10px}
-.statgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.stat{background:#f5f9ff;border-radius:12px;padding:10px;text-align:center}
-.stat strong{display:block;font:800 18px Orbitron;color:#182238}.stat span{font-size:11px;color:#71809a}
-.bar{height:9px;background:#e9eff8;border-radius:9px;overflow:hidden;margin:7px 0}.bar>i{display:block;height:100%;background:linear-gradient(90deg,#078cff,#7b2cff,#ff1493)}
-.disclaimer{font-size:11px;color:#71809a;text-align:center;padding:8px}.manualBtn{width:100%;padding:12px;border:0;border-radius:12px;color:white;font:800 13px Orbitron;background:linear-gradient(90deg,#078cff,#7b2cff);margin-bottom:8px}
-.clearBtn{width:100%;padding:10px;border:1px solid #ff315c;color:#ff315c;border-radius:12px;background:white;font:700 12px Orbitron}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Prakash</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@600;700&family=Cinzel:wght@800&display=swap" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore-compat.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        <style>
+:root{
+    --blue:#078cff;
+    --cyan:#00cfff;
+    --purple:#7b2cff;
+    --pink:#ff1493;
+    --green:#19d77a;
+    --red:#ff315c;
+    --text:#18233a;
+    --muted:#71809a;
+    --white:#ffffff;
+    --light:#f4f8ff;
+    --border:#d9e5f5;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    user-select:none;
+}
+
+body{
+    background:
+        radial-gradient(circle at 10% 5%,rgba(0,145,255,.12),transparent 28%),
+        radial-gradient(circle at 90% 20%,rgba(255,20,147,.10),transparent 30%),
+        linear-gradient(180deg,#fafdff 0%,#eef5ff 100%);
+    font-family:'Rajdhani',sans-serif;
+    color:var(--text);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    padding:10px;
+    overflow:hidden;
+    position:relative;
+}
+
+#bg-canvas{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    z-index:0;
+    pointer-events:none;
+}
+
+.app-container{
+    position:relative;
+    z-index:2;
+    width:100%;
+    max-width:420px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+/* TOP LOGO */
+.lucifer-3d{
+    font-family:'Orbitron',sans-serif;
+    font-size:34px;
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:3px;
+    text-align:center;
+    color:#172238;
+    margin-bottom:18px;
+    background:linear-gradient(
+        90deg,
+        #172238 0%,
+        #147ee8 42%,
+        #08aeea 60%,
+        #172238 100%
+    );
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+    text-shadow:none;
+    animation:logoFloat 3s ease-in-out infinite;
+}
+
+@keyframes logoFloat{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-3px)}
+}
+
+/* LOGIN */
+#login-screen{
+    width:100%;
+    text-align:center;
+    animation:fadeIn .6s ease;
+}
+
+.login-card{
+    background:rgba(255,255,255,.94);
+    padding:32px 24px;
+    border-radius:28px;
+    border:1px solid var(--border);
+    box-shadow:
+        0 15px 40px rgba(40,90,150,.14),
+        0 3px 12px rgba(0,0,0,.05);
+    backdrop-filter:blur(15px);
+    position:relative;
+    overflow:hidden;
+}
+
+.login-card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:4px;
+    background:linear-gradient(
+        90deg,
+        var(--blue),
+        var(--purple),
+        var(--pink)
+    );
+}
+
+.card-label{
+    font-size:13px;
+    color:var(--purple);
+    letter-spacing:2px;
+    margin-bottom:20px;
+    font-weight:800;
+    font-family:'Orbitron',sans-serif;
+}
+
+.key-input{
+    width:100%;
+    padding:16px;
+    background:#f7faff;
+    border:1px solid #cddcf0;
+    border-radius:16px;
+    color:var(--blue);
+    text-align:center;
+    font-size:17px;
+    font-weight:700;
+    margin-bottom:18px;
+    outline:none;
+    font-family:'Orbitron',sans-serif;
+    letter-spacing:2px;
+    transition:.3s;
+}
+
+.key-input:focus{
+    background:#fff;
+    border-color:var(--blue);
+    box-shadow:0 0 0 4px rgba(0,140,255,.10);
+}
+
+.activate-btn{
+    width:100%;
+    padding:16px;
+    background:linear-gradient(
+        90deg,
+        #087cff,
+        #7131e8,
+        #ed168e
+    );
+    color:#fff;
+    border:none;
+    border-radius:16px;
+    font-weight:900;
+    cursor:pointer;
+    text-transform:uppercase;
+    font-size:15px;
+    font-family:'Orbitron',sans-serif;
+    letter-spacing:1px;
+    box-shadow:0 9px 22px rgba(103,55,220,.25);
+    transition:.3s;
+}
+
+.activate-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 13px 28px rgba(103,55,220,.32);
+}
+
+.activate-btn:active{
+    transform:translateY(1px);
+}
+
+.contact-btn{
+    display:inline-block;
+    margin-top:20px;
+    color:var(--blue);
+    text-decoration:none;
+    font-size:12px;
+    font-weight:800;
+    border:1px solid #c9dff7;
+    padding:9px 18px;
+    border-radius:12px;
+    font-family:'Orbitron',sans-serif;
+    background:#f7fbff;
+}
+
+/* DASHBOARD */
+#ui{
+    display:none;
+    width:100%;
+    flex-direction:column;
+    height:94vh;
+    animation:fadeIn .6s ease;
+}
+
+#ui .lucifer-3d{
+    font-size:25px;
+    margin-bottom:10px;
+}
+/* PERIOD */
+.period-card{
+    background:rgba(255,255,255,.96);
+    padding:17px 20px;
+    border-radius:22px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border:1px solid var(--border);
+    margin-bottom:13px;
+    box-shadow:0 8px 25px rgba(45,90,140,.12);
+}
+
+.p-label{
+    font-size:11px;
+    color:#71809a;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+.p-val{
+    font-size:25px;
+    font-weight:900;
+    color:#182238;
+    font-family:'Orbitron',sans-serif;
+}
+
+.timer-val{
+    font-size:29px;
+    font-weight:900;
+    color:#12c86d;
+    text-shadow:0 0 10px rgba(18,200,109,.25);
+    border-left:1px solid #dce6f2;
+    padding-left:18px;
+    font-family:'Orbitron',sans-serif;
+}
+
+/* MAIN PREDICTION CARD */
+.pred-card{
+    background:
+        radial-gradient(
+            circle at 50% 15%,
+            rgba(31,145,255,.12),
+            transparent 45%
+        ),
+        linear-gradient(145deg,#ffffff,#f5f9ff);
+    border-radius:28px;
+    min-height:245px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    border:1px solid #d4e3f5;
+    margin-bottom:13px;
+    box-shadow:
+        0 12px 35px rgba(42,88,145,.14),
+        inset 0 1px 0 #fff;
+    position:relative;
+}
+
+.pred-card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:12%;
+    width:76%;
+    height:3px;
+    border-radius:20px;
+    background:linear-gradient(
+        90deg,
+        #09a5ff,
+        #7430e9,
+        #ff168e
+    );
+}
+
+/* BIG / SMALL */
+.res-text{
+    font-size:64px;
+    font-weight:900;
+    font-family:'Orbitron',sans-serif;
+    letter-spacing:3px;
+    transition:.4s;
+    text-shadow:0 5px 18px rgba(70,100,150,.12);
+}
+
+/* NUMBER BALLS */
+.num-container{
+    display:flex;
+    gap:24px;
+    margin-top:20px;
+}
+
+.num-ball{
+    width:65px;
+    height:65px;
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            #535b69,
+            #202632 65%,
+            #11151c
+        );
+    border:3px solid var(--blue);
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:28px;
+    color:#8b39ff;
+    font-weight:900;
+    box-shadow:
+        0 6px 15px rgba(25,40,65,.28),
+        0 0 0 4px rgba(0,145,255,.08);
+    font-family:'Orbitron',sans-serif;
+    transition:.3s;
+}
+
+.num-ball:nth-child(2){
+    border-color:#ff168d !important;
+    color:#8b39ff !important;
+}
+
+.num-ball:hover{
+    transform:translateY(-3px) scale(1.04);
+}
+
+/* HISTORY */
+.session-box{
+    flex-grow:1;
+    background:rgba(255,255,255,.97);
+    border-radius:23px;
+    padding:15px;
+    border:1px solid var(--border);
+    overflow-y:auto;
+    box-shadow:0 10px 30px rgba(45,90,140,.12);
+}
+
+.session-box::-webkit-scrollbar{
+    width:4px;
+}
+
+.session-box::-webkit-scrollbar-thumb{
+    background:linear-gradient(
+        #078cff,
+        #9b35ff
+    );
+    border-radius:10px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th{
+    color:#667895;
+    font-size:10px;
+    padding-bottom:12px;
+    text-transform:uppercase;
+    font-weight:800;
+    text-align:center;
+    font-family:'Orbitron',sans-serif;
+}
+
+td{
+    padding:12px 5px;
+    text-align:center;
+    font-size:14px;
+    border-bottom:1px solid #edf2f8;
+    font-weight:700;
+    color:#33415b;
+}
+
+.history-row-new{
+    animation:slideInDown .6s ease forwards;
+    background:rgba(0,145,255,.05);
+}
+
+.tag-win{
+    color:#11ae65;
+    font-family:'Orbitron',sans-serif;
+    font-weight:900;
+}
+
+.tag-loss{
+    color:#ed2860;
+    font-family:'Orbitron',sans-serif;
+    font-weight:900;
+}
+
+.tag-jackpot{
+    background:linear-gradient(
+        135deg,
+        #ffd34e,
+        #ff9c00
+    );
+    color:#202020;
+    padding:4px 9px;
+    border-radius:8px;
+    font-size:10px;
+    font-weight:900;
+    display:inline-block;
+    box-shadow:0 4px 12px rgba(255,174,0,.25);
+    font-family:'Orbitron',sans-serif;
+}
+/* MODAL */
+.modal-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(20,30,50,.42);
+    backdrop-filter:blur(10px);
+    z-index:9999;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .4s;
+}
+
+.modal-overlay.active{
+    opacity:1;
+    pointer-events:auto;
+}
+
+.modal-card{
+    background:rgba(255,255,255,.98);
+    border-radius:28px;
+    padding:32px 24px;
+    width:90%;
+    max-width:360px;
+    text-align:center;
+    position:relative;
+    transform:scale(.7) translateY(40px);
+    transition:.5s cubic-bezier(.175,.885,.32,1.275);
+    box-shadow:0 25px 70px rgba(30,60,100,.25);
+}
+
+.modal-overlay.active .modal-card{
+    transform:scale(1) translateY(0);
+}
+
+.modal-win{
+    border:2px solid #17c978;
+}
+
+.modal-loss{
+    border:2px solid #ff2860;
+}
+
+.modal-jackpot{
+    border:2px solid #ffb000;
+}
+
+.modal-icon{
+    font-size:60px;
+    margin-bottom:8px;
+    display:inline-block;
+    animation:bounceIn .8s ease;
+}
+
+.modal-title{
+    font-family:'Orbitron',sans-serif;
+    font-size:29px;
+    font-weight:900;
+    letter-spacing:1px;
+    margin-bottom:10px;
+}
+
+.modal-win .modal-title{
+    color:#0cb866;
+    text-shadow:none;
+}
+
+.modal-loss .modal-title{
+    color:#ed2459;
+    text-shadow:none;
+}
+
+.modal-jackpot .modal-title{
+    color:#e69a00;
+    text-shadow:none;
+}
+
+.modal-desc{
+    font-size:16px;
+    color:#65738a;
+    margin-bottom:23px;
+    font-weight:600;
+}
+
+.modal-close-btn{
+    padding:12px 30px;
+    border-radius:13px;
+    border:none;
+    font-family:'Orbitron',sans-serif;
+    font-weight:900;
+    font-size:13px;
+    cursor:pointer;
+    text-transform:uppercase;
+}
+
+.modal-win .modal-close-btn{
+    background:#16c878;
+    color:#fff;
+}
+
+.modal-loss .modal-close-btn{
+    background:#ef2860;
+    color:#fff;
+}
+
+.modal-jackpot .modal-close-btn{
+    background:#ffb000;
+    color:#111;
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:scale(.96);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+@keyframes slideInDown{
+    from{
+        opacity:0;
+        transform:translateY(-20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes bounceIn{
+    0%{transform:scale(0)}
+    60%{transform:scale(1.15)}
+    100%{transform:scale(1)}
+}
+
+/* MOBILE */
+@media(max-width:380px){
+    .lucifer-3d{
+        font-size:28px;
+    }
+
+    .res-text{
+        font-size:55px;
+    }
+
+    .num-ball{
+        width:58px;
+        height:58px;
+        font-size:25px;
+    }
+
+    .period-card{
+        padding:15px;
+    }
+
+    .timer-val{
+        font-size:25px;
+    }
+}
 </style>
+
 </head>
-<body><canvas id="bg"></canvas><main class="app"><div class="logo">PRAKASH HACK</div>
-<section class="login" id="login"><div class="label">SYSTEM PROTOCOL LOCKED</div><input class="input" id="pw" type="password" placeholder="ENTER ACCESS KEY"><button class="btn" onclick="auth()">ACTIVATE SYSTEM</button><div id="error" class="err"></div><div class="msg">Personal demo interface</div></section>
-<section id="dash">
-<div class="period"><div><div class="p-label">NEXT PERIOD</div><div class="pval" id="period">----</div></div><div class="timer" id="timer">00:00</div></div>
-<div class="pred"><div id="size" class="sizeword">LIVE</div><div class="balls"><div class="ball" id="bigBall">?</div><div class="ball small" id="smallBall">?</div></div><div class="hint">Latest two actual results • no predictions</div></div>
-<div class="status" id="status">Connecting to results source…</div>
-<div class="panel"><h3>RESULT AUDIT • LAST 100</h3><div class="statgrid"><div class="stat"><strong id="bigCount">—</strong><span>BIG results</span></div><div class="stat"><strong id="smallCount">—</strong><span>SMALL results</span></div><div class="stat"><strong id="avg">—</strong><span>Observed BIG share</span></div><div class="stat"><strong id="runs">—</strong><span>Current size streak</span></div></div><div id="shareBar" class="bar"><i style="width:0%"></i></div><div id="auditNote" class="msg">Waiting for results…</div></div>
-<div class="panel"><h3>NUMBER FREQUENCY • LAST 100</h3><div class="statgrid" id="freq"></div><div class="disclaimer">Past frequencies are descriptive and do not predict future outcomes.</div></div>
-<div class="panel"><h3>OBSERVED SIZE SPLIT</h3><div id="windows">Waiting for sufficient data…</div></div>
-<div class="panel"><h3>MANUAL RESULT VERIFICATION</h3><div class="msg">Record your own selection for a period. The table checks it against the actual result when available.</div>
-<label>Period Number (full or last 4 digits)</label><input id="pickPeriod" class="manualInput" placeholder="Enter period number" inputmode="numeric">
-<label>Selection Type</label><select id="pickType" class="manualInput" onchange="changePickType()"><option value="size">BIG / SMALL</option><option value="number">NUMBER 0-9</option></select>
-<select id="pickValue" class="manualInput"><option value="BIG">BIG</option><option value="SMALL">SMALL</option></select>
-<button class="manualBtn" onclick="savePick()">SAVE SELECTION</button><button class="clearBtn" onclick="clearPicks()">CLEAR SAVED SELECTIONS</button><div id="pickMessage" class="msg">Saved locally on this device.</div></div>
-<div class="history"><table><thead><tr><th>PERIOD</th><th>NUM</th><th>SIZE</th><th>COLOR</th><th>STATUS</th></tr></thead><tbody id="rows"></tbody></table></div>
-</section></main>
+<body>
+
+<!-- Dynamic Particle Canvas -->
+<canvas id="bg-canvas"></canvas>
+
+<!-- Main Container -->
+<div class="app-container">
+
+    <!-- LOGIN SCREEN -->
+    <div id="login-screen">
+        <div class="lucifer-3d">PRAKASH.HACK</div>
+        <div class="login-card">
+            <div class="card-label">SYSTEM PROTOCOL LOCKED</div>
+            <input type="text" id="passInput" class="key-input" placeholder="ENTER ACCESS KEY">
+            <button class="activate-btn" onclick="checkAuth()">ACTIVATE SYSTEM</button>
+            <p id="err" style="font-size:13px; margin-top:15px; font-weight:bold; font-family:'Orbitron';"></p>
+            <a href="https://t.me/Prakash1356" target="_blank" class="contact-btn">[ CONTACT FOR KEY ]</a>
+        </div>
+    </div>
+
+    <!-- DASHBOARD UI -->
+    <div id="ui">
+        <div class="lucifer-3d" style="font-size: 26px; margin-bottom: 12px;"> PRAKASH.HACK </div>
+        
+        <div class="period-card">
+            <div>
+                <div class="p-label">Next Period</div>
+                <div class="p-val" id="nextP">----</div>
+            </div>
+            <div class="timer-val" id="timer">00:00</div>
+        </div>
+        
+        <div class="pred-card">
+            <div id="res" class="res-text" style="color: #666;">SCANNING</div>
+            <div class="num-container">
+                <div class="num-ball" id="n1">?</div>
+                <div class="num-ball" id="n2" style="border-color:#fff; color:#fff;">?</div>
+            </div>
+        </div>
+        
+        <div class="session-box">
+            <table>
+                <thead>
+                    <tr>
+                        <th>PERIOD</th>
+                        <th>NUM</th>
+                        <th>SIZE</th>
+                        <th>STATUS</th>
+                    </tr>
+                </thead>
+                <tbody id="session-h">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<!-- OVERLAY WIN/LOSS/JACKPOT MODAL ANIMATION -->
+<div class="modal-overlay" id="resultModal">
+    <div class="modal-card" id="modalCard">
+        <div class="modal-icon" id="mIcon">🎉</div>
+        <div class="modal-title" id="mTitle">VICTORY</div>
+        <div class="modal-desc" id="mDesc">You won Period #1024!</div>
+        <button class="modal-close-btn" onclick="closeModal()">CONTINUE</button>
+    </div>
+</div>
+
 <script>
-const PASSWORD='Prakash@97', API='https://draw.ar-lottery01.com/WinGo/WinGo_1M/GetHistoryIssuePage.json';
-let listCache=[], manualPicks={};
-try{manualPicks=JSON.parse(localStorage.getItem('prakashManualPicks')||'{}')}catch(e){manualPicks={}}
-function auth(){if(document.getElementById('pw').value===PASSWORD){sessionStorage.setItem('prakashLogin','yes');showDash()}else document.getElementById('error').textContent='Invalid password'}
-function showDash(){document.getElementById('login').style.display='none';document.getElementById('dash').style.display='flex';if(!window.dashboardStarted){window.dashboardStarted=true;start()}}
-window.addEventListener('DOMContentLoaded',()=>{if(sessionStorage.getItem('prakashLogin')==='yes')showDash()});
-function color(n){return n===0||n===5?'Violet':([1,3,7,9].includes(n)?'Green':'Red')}
-function size(n){return n>=5?'BIG':'SMALL'}
-function tick(){let s=new Date().getSeconds();document.getElementById('timer').textContent='00:'+String(60-s).padStart(2,'0')}
-function calc(a){let big=a.filter(n=>n>=5).length;return {big,small:a.length-big}}
-function streak(a){if(!a.length)return '—';let first=size(a[0]),count=0;for(let n of a){if(size(n)===first)count++;else break}return count+' '+first}
-function changePickType(){let type=document.getElementById('pickType').value,sel=document.getElementById('pickValue');sel.innerHTML=type==='size'?'<option value="BIG">BIG</option><option value="SMALL">SMALL</option>':Array.from({length:10},(_,n)=>`<option value="${n}">${n}</option>`).join('')}
-function normalizePeriod(p){return String(p).trim().replace(/\D/g,'').slice(-4)}
-function savePick(){let period=document.getElementById('pickPeriod').value.trim(),type=document.getElementById('pickType').value,value=document.getElementById('pickValue').value;if(!period){document.getElementById('pickMessage').textContent='Enter a period number.';return}let key=normalizePeriod(period);if(key.length!==4){document.getElementById('pickMessage').textContent='Period should contain at least 4 digits.';return}manualPicks[key]={type,value,recordedAt:Date.now()};try{localStorage.setItem('prakashManualPicks',JSON.stringify(manualPicks))}catch(e){document.getElementById('pickMessage').textContent='Unable to save in this browser.';return}document.getElementById('pickMessage').textContent='Selection saved for period '+key;renderRows(listCache)}
-function clearPicks(){if(!confirm('Delete all saved selections?'))return;manualPicks={};localStorage.removeItem('prakashManualPicks');document.getElementById('pickMessage').textContent='Saved selections cleared.';renderRows(listCache)}
-function getResultStatus(x){let p=manualPicks[normalizePeriod(x.issueNumber)];if(!p)return '—';let n=Number(x.number);if(p.type==='number')return Number(p.value)===n?'JACKPOT':'LOSS';return p.value===size(n)?'WIN':'LOSS'}
-function renderRows(list){document.getElementById('rows').innerHTML=list.slice(0,30).map(x=>{let n=Number(x.number),sz=size(n),st=getResultStatus(x),sc=st==='WIN'?'#19a765':st==='JACKPOT'?'#7b2cff':st==='LOSS'?'#ff315c':'#64748b';return `<tr><td>${normalizePeriod(x.issueNumber)}</td><td>${n}</td><td><span class="tag">${sz}</span></td><td>${color(n)}</td><td style="color:${sc};font-weight:900">${st}</td></tr>`}).join('')}
-function updateAudit(list){let nums=list.slice(0,100).map(x=>Number(x.number)),b=calc(nums),total=nums.length,share=total?Math.round(b.big/total*100):0;document.getElementById('bigCount').textContent=b.big;document.getElementById('smallCount').textContent=b.small;document.getElementById('avg').textContent=share+'%';document.getElementById('runs').textContent=streak(nums);document.querySelector('#shareBar i').style.width=share+'%';document.getElementById('auditNote').textContent=`${total} observed rounds • BIG ${share}% / SMALL ${100-share}% • descriptive only`;let fc=Array(10).fill(0);nums.forEach(n=>{if(n>=0&&n<=9)fc[n]++});document.getElementById('freq').innerHTML=fc.map((v,n)=>`<div class="stat"><strong>${n}: ${v}</strong><span>${total?Math.round(v/total*100):0}% of sample</span></div>`).join('');let windows=[10,20,50,100].map(k=>{let ar=list.slice(0,k).map(x=>Number(x.number));if(!ar.length)return `<div style="margin:6px 0"><b>Last ${k}:</b> No data</div>`;let q=calc(ar);return `<div style="margin:6px 0"><b>Last ${ar.length} (window ${k}):</b> BIG ${q.big} (${Math.round(q.big/ar.length*100)}%) • SMALL ${q.small} (${Math.round(q.small/ar.length*100)}%)</div>`});document.getElementById('windows').innerHTML=windows.join('')}
-async function load(){try{let r=await fetch(API+'?t='+Date.now());if(!r.ok)throw Error('HTTP '+r.status);let d=await r.json(),raw=d?.data?.list;if(!raw?.length)throw Error('No results');let list=raw.slice().sort((a,b)=>{try{return BigInt(b.issueNumber)>BigInt(a.issueNumber)?1:BigInt(b.issueNumber)<BigInt(a.issueNumber)?-1:0}catch{return String(b.issueNumber).localeCompare(String(a.issueNumber))}});listCache=list;let latest=list[0],issue=latest.issueNumber;document.getElementById('period').textContent=normalizePeriod(BigInt(issue)+1n);let nums=list.slice(0,2).map(x=>Number(x.number));document.getElementById('size').textContent=size(Number(latest.number));document.getElementById('size').style.color=size(Number(latest.number))==='BIG'?'#ff0055':'#00b96b';document.getElementById('bigBall').textContent=nums[0]??'?';document.getElementById('smallBall').textContent=nums[1]??'?';document.getElementById('status').textContent='Live history feed connected • '+new Date().toLocaleTimeString();renderRows(list);updateAudit(list)}catch(e){document.getElementById('status').textContent='Live source unavailable • retrying';console.error(e)}}
-function start(){tick();setInterval(tick,1000);load();setInterval(load,8000)}
-const c=document.getElementById('bg'),ctx=c.getContext('2d');let ps=[];
-function resize(){c.width=innerWidth;c.height=innerHeight;ps=Array.from({length:45},()=>({x:Math.random()*c.width,y:Math.random()*c.height,vx:(Math.random()-.5)*.5,vy:(Math.random()-.5)*.5,r:Math.random()*2+1}))}
-resize();addEventListener('resize',resize);function anim(){ctx.clearRect(0,0,c.width,c.height);ps.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>c.width)p.vx*=-1;if(p.y<0||p.y>c.height)p.vy*=-1;ctx.fillStyle='rgba(0,190,180,.35)';ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill()});requestAnimationFrame(anim)}anim();
-</script></body></html>
-(x.number);if(p.type==='number')return Number(p.value)===n?'JACKPOT':'LOSS';return p.value===size(n)?'WIN':'LOSS'}
-function renderRows(list){document.getElementById('rows').innerHTML=list.slice(0,30).map(x=>{let n=Number(x.number),sz=size(n),st=getResultStatus(x),sc=st==='WIN'?'#19a765':st==='JACKPOT'?'#7b2cff':st==='LOSS'?'#ff315c':'#64748b';return `<tr><td>${normalizePeriod(x.issueNumber)}</td><td>${n}</td><td><span class="tag">${sz}</span></td><td>${color(n)}</td><td style="color:${sc};font-weight:900">${st}</td></tr>`}).join('')}
-function updateAudit(list){let nums=list.slice(0,100).map(x=>Number(x.number)),b=calc(nums),total=nums.length,share=total?Math.round(b.big/total*100):0;document.getElementById('bigCount').textContent=b.big;document.getElementById('smallCount').textContent=b.small;document.getElementById('avg').textContent=share+'%';document.getElementById('runs').textContent=streak(nums);document.querySelector('#shareBar i').style.width=share+'%';document.getElementById('auditNote').textContent=`${total} observed rounds • BIG ${share}% / SMALL ${100-share}% • descriptive only`;let fc=Array(10).fill(0);nums.forEach(n=>{if(n>=0&&n<=9)fc[n]++});document.getElementById('freq').innerHTML=fc.map((v,n)=>`<div class="stat"><strong>${n}: ${v}</strong><span>${total?Math.round(v/total*100):0}% of sample</span></div>`).join('');let windows=[10,20,50,100].map(k=>{let ar=list.slice(0,k).map(x=>Number(x.number));if(!ar.length)return `<div style="margin:6px 0"><b>Last ${k}:</b> No data</div>`;let q=calc(ar);return `<div style="margin:6px 0"><b>Last ${ar.length} (window ${k}):</b> BIG ${q.big} (${Math.round(q.big/ar.length*100)}%) • SMALL ${q.small} (${Math.round(q.small/ar.length*100)}%)</div>`});document.getElementById('windows').innerHTML=windows.join('')}
-async function load(){try{let r=await fetch(API+'?t='+Date.now());if(!r.ok)throw Error('HTTP '+r.status);let d=await r.json(),raw=d?.data?.list;if(!raw?.length)throw Error('No results');let list=raw.slice().sort((a,b)=>{try{return BigInt(b.issueNumber)>BigInt(a.issueNumber)?1:BigInt(b.issueNumber)<BigInt(a.issueNumber)?-1:0}catch{return String(b.issueNumber).localeCompare(String(a.issueNumber))}});listCache=list;let latest=list[0],issue=latest.issueNumber;document.getElementById('period').textContent=normalizePeriod(BigInt(issue)+1n);let nums=list.slice(0,2).map(x=>Number(x.number));document.getElementById('size').textContent=size(Number(latest.number));document.getElementById('size').style.color=size(Number(latest.number))==='BIG'?'#ff0055':'#00b96b';document.getElementById('bigBall').textContent=nums[0]??'?';document.getElementById('smallBall').textContent=nums[1]??'?';document.getElementById('status').textContent='Live history feed connected • '+new Date().toLocaleTimeString();renderRows(list);updateAudit(list)}catch(e){document.getElementById('status').textContent='Live source unavailable • retrying';console.error(e)}}
-function start(){tick();setInterval(tick,1000);load();setInterval(load,8000)}
-const c=document.getElementById('bg'),ctx=c.getContext('2d');let ps=[];
-function resize(){c.width=innerWidth;c.height=innerHeight;ps=Array.from({length:45},()=>({x:Math.random()*c.width,y:Math.random()*c.height,vx:(Math.random()-.5)*.5,vy:(Math.random()-.5)*.5,r:Math.random()*2+1}))}
-resize();addEventListener('resize',resize);function anim(){ctx.clearRect(0,0,c.width,c.height);ps.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>c.width)p.vx*=-1;if(p.y<0||p.y>c.height)p.vy*=-1;ctx.fillStyle='rgba(0,190,180,.35)';ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill()});requestAnimationFrame(anim)}anim();
-</script></body></html>
-if(!p)return '—';
- let n=Number(x.number);
- if(p.type==='number'){
-  return Number(p.value)===n?'JACKPOT':'LOSS';
- }
- return p.value===size(n)?'WIN':'LOSS';
-}
+    // 1. Particle Background Logic
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
 
-function renderRows(list){
- document.getElementById('rows').innerHTML=list.slice(0,30).map(x=>{
- let n=Number(x.number),sz=size(n),st=getResultStatus(x);
- let statusColor=st==='WIN'?'#19a765':st==='JACKPOT'?'#7b2cff':st==='LOSS'?'#ff315c':'#64748b';
- return `<tr>
- <td>${String(x.issueNumber).slice(-4)}</td>
- <td>${n}</td>
- <td><span class="tag">${sz}</span></td>
- <td>${color(n)}</td>
- <td style="color:${statusColor};font-weight:900">${st}</td>
- </tr>`;
- }).join('');
-}
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
 
-function updateAudit(list){
- let nums=list.slice(0,100).map(x=>Number(x.number)),b=calc(nums),total=nums.length,share=total?Math.round(b.big/total*100):0;
- document.getElementById('bigCount').textContent=b.big;
- document.getElementById('smallCount').textContent=b.small;
- document.getElementById('avg').textContent=share+'%';
- document.getElementById('runs').textContent=streak(nums);
- document.querySelector('#shareBar i').style.width=share+'%';
- document.getElementById('auditNote').textContent=`${total} observed rounds • BIG ${share}% / SMALL ${100-share}% • descriptive only`;
+    class Particle {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 2.5 + 0.5;
+            this.speedX = (Math.random() - 0.5) * 0.8;
+            this.speedY = (Math.random() - 0.5) * 0.8;
+            this.color = Math.random() > 0.5 ? 'rgba(0, 255, 204, ' : 'rgba(243, 208, 120, ';
+            this.alpha = Math.random() * 0.6 + 0.2;
+        }
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+            if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+            if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+        }
+        draw() {
+            ctx.fillStyle = this.color + this.alpha + ')';
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+        }
+    }
 
- let fc=Array(10).fill(0);
- nums.forEach(n=>{if(n>=0&&n<=9)fc[n]++});
- document.getElementById('freq').innerHTML=fc.map((v,n)=>`<div class="stat"><strong>${n}: ${v}</strong><span>${total?Math.round(v/total*100):0}% of sample</span></div>`).join('');
+    for (let i = 0; i < 55; i++) particles.push(new Particle());
 
- let windows=[10,20,50,100].map(k=>{
- let ar=list.slice(0,k).map(x=>Number(x.number));
- if(!ar.length)return `<div style="margin:6px 0"><b>Last ${k}:</b> No data</div>`;
- let q=calc(ar);
- return `<div style="margin:6px 0"><b>Last ${ar.length} (window ${k}):</b> BIG ${q.big} (${Math.round(q.big/ar.length*100)}%) • SMALL ${q.small} (${Math.round(q.small/ar.length*100)}%)</div>`;
- });
- document.getElementById('windows').innerHTML=windows.join('');
-}
+    function animateParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => { p.update(); p.draw(); });
+        requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
 
-async function load(){
- try{
-  let r=await fetch(API+'?t='+Date.now());
-  if(!r.ok)throw Error();
-  let d=await r.json(),list=d?.data?.list;
-  if(!list?.length)throw Error();
-  listCache=list;
-  let latest=list[0],issue=latest.issueNumber;
-  document.getElementById('period').textContent=String(issue).slice(-4);
-  let nums=list.slice(0,2).map(x=>Number(x.number));
-  document.getElementById('size').textContent=size(Number(latest.number));
-  document.getElementById('size').style.color=size(Number(latest.number))==='BIG'?'#ff0055':'#00b96b';
-  document.getElementById('bigBall').textContent=nums[0]??'?';
-  document.getElementById('smallBall').textContent=nums[1]??'?';
-  document.getElementById('status').textContent='Live history feed connected • '+new Date().toLocaleTimeString();
-  renderRows(list);
-  updateAudit(list);
- }catch(e){
-  document.getElementById('status').textContent='Live source unavailable right now. Retrying…'
- }
-}
+    // 2. Web Audio Synthesizer for Custom Sound Effects
+    const AudioEngine = {
+        ctx: null,
+        init() {
+            if (!this.ctx) this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+        },
+        playWin() {
+            this.init();
+            if (!this.ctx) return;
+            const now = this.ctx.currentTime;
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(440, now);
+            osc.frequency.exponentialRampToValueAtTime(880, now + 0.3);
+            gain.gain.setValueAtTime(0.3, now);
+            gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+            osc.start(now);
+            osc.stop(now + 0.3);
+        },
+        playLoss() {
+            this.init();
+            if (!this.ctx) return;
+            const now = this.ctx.currentTime;
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+            osc.type = 'sawtooth';
+            osc.frequency.setValueAtTime(300, now);
+            osc.frequency.linearRampToValueAtTime(120, now + 0.4);
+            gain.gain.setValueAtTime(0.3, now);
+            gain.gain.exponentialRampToValueAtTime(0.01, now + 0.4);
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+            osc.start(now);
+            osc.stop(now + 0.4);
+        },
+        playJackpot() {
+            this.init();
+            if (!this.ctx) return;
+            const notes = [523.25, 659.25, 783.99, 1046.50];
+            notes.forEach((freq, idx) => {
+                const now = this.ctx.currentTime + (idx * 0.1);
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(freq, now);
+                gain.gain.setValueAtTime(0.3, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.25);
+                osc.connect(gain);
+                gain.connect(this.ctx.destination);
+                osc.start(now);
+                osc.stop(now + 0.25);
+            });
+        }
+    };
 
-function start(){tick();setInterval(tick,1000);load();setInterval(load,8000)}
+    // 3. Auth Check Logic
+    function checkAuth() {
+        const key = document.getElementById('passInput').value.trim();
+        const err = document.getElementById('err');
+        
+        if (key === "PrakashHero") {
+            err.style.color = "#00ffcc";
+            err.innerText = "ACCESS GRANTED! LOADING VIP ENGINE...";
+            setTimeout(() => {
+                document.getElementById('login-screen').style.display = 'none';
+                document.getElementById('ui').style.display = 'flex';
+                startDiversityEngine();
+            }, 800);
+        } else {
+            err.style.color = "#ff0055";
+            err.innerText = "INVALID SYSTEM KEY!";
+        }
+    }
 
-const c=document.getElementById('bg'),ctx=c.getContext('2d');
-let ps=[];
-function resize(){
- c.width=innerWidth;c.height=innerHeight;
- ps=Array.from({length:45},()=>({x:Math.random()*c.width,y:Math.random()*c.height,vx:(Math.random()-.5)*.5,vy:(Math.random()-.5)*.5,r:Math.random()*2+1}))
-}
-resize();addEventListener('resize',resize);
-function anim(){
- ctx.clearRect(0,0,c.width,c.height);
- ps.forEach(p=>{
- p.x+=p.vx;p.y+=p.vy;
- if(p.x<0||p.x>c.width)p.vx*=-1;
- if(p.y<0||p.y>c.height)p.vy*=-1;
- ctx.fillStyle='rgba(0,190,180,.35)';
- ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill()
- });
- requestAnimationFrame(anim)
-}
-anim();
+    // 4. Firebase Setup
+    const fb = { 
+        apiKey: "AIzaSyDj8leldCxpZ9RupIZSOAgPMqWtN4U6ruU", 
+        authDomain: "ytexpert-2ad5e.firebaseapp.com", 
+        projectId: "ytexpert-2ad5e" 
+    };
+    firebase.initializeApp(fb);
+    
+    let sessionData = [];
+    let lastProcessed = "";
+    let currentActive = null;
+
+    function startDiversityEngine() {
+        setInterval(() => {
+            const s = new Date().getSeconds();
+            document.getElementById('timer').innerText = "00:" + (60 - s).toString().padStart(2, '0');
+        }, 1000);
+        
+        enginePro();
+        setInterval(enginePro, 2000); 
+    }
+
+    // 5. Prediction Engine with Result Popups & Audio Trigger
+    async function enginePro() {
+        try {
+            const r = await fetch(`https://draw.ar-lottery01.com/WinGo/WinGo_1M/GetHistoryIssuePage.json?t=${Date.now()}`);
+            if (!r.ok) return;
+            
+            const data = await r.json();
+            if (!data || !data.data || !data.data.list) return;
+
+            const list = data.data.list;
+            const latest = list[0];
+            const issue = latest.issueNumber;
+
+            if (lastProcessed !== "" && lastProcessed !== issue) {
+                if (currentActive && currentActive.period === issue) {
+                    const n = parseInt(latest.number);
+                    const sz = n >= 5 ? "BIG" : "SMALL";
+                    let statusTag = "";
+
+                    if (n === currentActive.n1 || n === currentActive.n2) {
+                        statusTag = '<span class="tag-jackpot">🎰JACKPOT</span>';
+                        triggerResultModal("JACKPOT", issue.slice(-4), n);
+                        AudioEngine.playJackpot();
+                        confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
+                    } else if (sz === currentActive.size) {
+                        statusTag = '<span class="tag-win">🗡️WIN </span>';
+                        triggerResultModal("WIN", issue.slice(-4), n);
+                        AudioEngine.playWin();
+                        confetti({ particleCount: 60, spread: 60, origin: { y: 0.6 } });
+                    } else {
+                        statusTag = '<span class="tag-loss">👺LOSS</span>';
+                        triggerResultModal("LOSS", issue.slice(-4), n);
+                        AudioEngine.playLoss();
+                    }
+                    
+                    sessionData.unshift({ p: issue.slice(-4), num: n, s: sz, res: statusTag });
+                    if(sessionData.length > 15) sessionData.pop();
+                    updateTable();
+                }
+            }
+
+            const nextP = (BigInt(issue) + 1n).toString();
+            if (!currentActive || currentActive.period !== nextP) {
+                const seed = parseInt(issue.slice(-3));
+                const history = list.slice(0, 10).map(x => parseInt(x.number));
+                let bigBias = history.filter(n => n >= 5).length;
+                let trend = (seed % 2 === 0) ? (bigBias >= 5 ? "BIG" : "SMALL") : (history[0] >= 5 ? "SMALL" : "BIG");
+
+                let n1, n2;
+                if(trend === "BIG") {
+                    n1 = [5, 6, 7, 8, 9][(seed + history[0]) % 5];
+                    n2 = [0, 1, 2, 3, 4][(seed * 3) % 5];
+                } else {
+                    n1 = [0, 1, 2, 3, 4][(seed + history[0]) % 5];
+                    n2 = [5, 6, 7, 8, 9][(seed * 7) % 5];
+                }
+
+                currentActive = { period: nextP, size: trend, n1: n1, n2: n2 };
+                
+                document.getElementById('res').innerText = trend;
+                document.getElementById('res').style.color = trend === 'BIG' ? '#ff0055' : '#00ff66';
+                document.getElementById('n1').innerText = n1;
+                document.getElementById('n2').innerText = n2;
+                document.getElementById('nextP').innerText = nextP.slice(-4);
+            }
+            lastProcessed = issue;
+        } catch(e) {
+            console.log("Engine sync state: Re-trying...");
+        }
+    }
+
+    // 6. Realtime History Table Render with Custom Slide Class
+    function updateTable() {
+        let h = "";
+        sessionData.forEach((i, index) => {
+            let animClass = index === 0 ? "history-row-new" : "";
+            h += `<tr class="${animClass}">
+                <td>${i.p}</td>
+                <td style="color: var(--neon-gold);">${i.num}</td>
+                <td style="color:${i.s === 'BIG' ? '#ff0055' : '#00ff66'}">${i.s}</td>
+                <td>${i.res}</td>
+            </tr>`;
+        });
+        document.getElementById('session-h').innerHTML = h;
+    }
+
+    // 7. Dynamic Modal Animation Handler
+    function triggerResultModal(type, period, number) {
+        const modal = document.getElementById('resultModal');
+        const card = document.getElementById('modalCard');
+        const mIcon = document.getElementById('mIcon');
+        const mTitle = document.getElementById('mTitle');
+        const mDesc = document.getElementById('mDesc');
+
+        card.className = "modal-card";
+
+        if (type === "WIN") {
+            card.classList.add("modal-win");
+            mIcon.innerHTML = "🗡️";
+            mTitle.innerText = "VICTORY WIN";
+            mDesc.innerText = `Period #${period} Result: ${number} (SUCCESS)`;
+        } else if (type === "LOSS") {
+            card.classList.add("modal-loss");
+            mIcon.innerHTML = "👺";
+            mTitle.innerText = "SYSTEM LOSS";
+            mDesc.innerText = `Period #${period} Result: ${number} (RETRY)`;
+        } else if (type === "JACKPOT") {
+            card.classList.add("modal-jackpot");
+            mIcon.innerHTML = "🎰";
+            mTitle.innerText = "JACKPOT HIT";
+            mDesc.innerText = `Period #${period} Number Hit: ${number}!`;
+        }
+
+        modal.classList.add('active');
+
+        // Auto close after 3.5s if not clicked
+        setTimeout(() => {
+            closeModal();
+        }, 3500);
+    }
+
+    function closeModal() {
+        document.getElementById('resultModal').classList.remove('active');
+    }
 </script>
 </body>
 </html>
